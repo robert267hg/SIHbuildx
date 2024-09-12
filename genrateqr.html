@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" 
+         content="width=device-width, 
+                        initial-scale=1.0" />
+    <title>QR Code Generator</title>
+   
+    <style>
+        h1, h3 {
+          color: green;
+        }
+        body, header {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+    </style>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Scan Qr Code</h1>
+        <h3>Enter drug name </h3>
+    </header>
+    <main>
+        <input id="drug-input" type="text" placeholder="Enter drug name (e.g. Ibuprofen, Acetaminophen, etc.)">
+        <button id="generate-btn">Scan QR Code</button>
+       
+        <div id="qrcode"></div>
+        <div id="drug-info"></div>
+    </main>
+    
+    <script>
+        // Create a new QRCode object
+        var qrcode = new QRCode("qrcode");
+
+        // Get the input and buttons
+        var drugInput = document.getElementById("drug-input");
+        var generateBtn = document.getElementById("generate-btn");
+        var scanBtn = document.getElementById("scan-btn");
+        var drugInfoDiv = document.getElementById("drug-info");
+
+        // Add event listener to the generate button
+        generateBtn.addEventListener("click", function() {
+            // Get the drug name from the input
+            var drugName = drugInput.value;
+
+            // Generate the QR code
+            qrcode.makeCode(drugName);
+
+            // Show the QR code
+            document.getElementById("qrcode").style.display = "block";
+
+            // Store the drug information in localStorage
+            localStorage.setItem(drugName, `Drug Name: ${drugName}<br>Composition: ...`);
+        });
+
+        // Add event listener to the scan button
+        scanBtn.addEventListener("click", function() {
+            // This is a placeholder for the scanning functionality
+            // In a real application, you would use a library like Instascan
+            // to access the device's camera and scan the QR code
+            // For demonstration purposes, we'll just show a prompt
+            var scannedCode = prompt("Enter the scanned QR code:");
+
+            // Get the drug name from the scanned code
+            var drugName = scannedCode;
+
+            // Show the drug info
+            var drugInfo = localStorage.getItem(drugName);
+            if (drugInfo) {
+                drugInfoDiv.innerHTML = drugInfo;
+            } else {
+                drugInfoDiv.innerHTML = "Drug not found";
+            }
+        });
+    </script>
+</body>
+
+</html>

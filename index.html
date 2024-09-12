@@ -1,0 +1,46 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedQuality - Drug Quality Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>MedQuality - Drug Quality Control</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Search for a drug:</h2>
+            <input type="search" id="search-input" placeholder="Enter drug name...">
+            <button id="search-button">Search</button>
+        </section>
+        <section id="scanner" >
+            <h2>Scan QR Code</h2>
+            <button id="scan-qr-button">Scan QR</button>
+            
+        </section>
+        <section id="analytics">
+            <h2>Analytics</h2>
+            <button id="analytics-button">View Analytics</button>
+            <p id="analytics-data"></p>
+        </section>
+       <section id="report" >
+    <h2>Report Error</h2>
+    <form id="report-form">
+        <label for="error-message">Error Message:</label>
+        <textarea id="error-message" name="error-message"></textarea>
+        <button id="report-button" type="submit">Enter</button>
+    </form>
+    <p id="report-response"></p>
+</section>
+    </main>
+    <footer>
+        <p>&copy; 2024 MedQuality</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
